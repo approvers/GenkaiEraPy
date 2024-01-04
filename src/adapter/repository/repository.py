@@ -1,10 +1,14 @@
-from typing import Optional
+from typing import Optional, Generic
 
 from src.adapter.session import AsyncSessionWrapperInterface
+from src.adapter.type import RawSessionType
 from src.common.design.interface import Interface
 
 
-class Repository[RawSessionType](Interface):
+class Repository(
+    Interface,
+    Generic[RawSessionType],
+):
     __session_wrapper: Optional[AsyncSessionWrapperInterface[RawSessionType]] = None
 
     def set_session_wrapper(

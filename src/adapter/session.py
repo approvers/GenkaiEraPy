@@ -1,11 +1,15 @@
 from abc import abstractmethod
 from contextlib import asynccontextmanager
-from typing import AsyncIterator
+from typing import AsyncIterator, Generic
 
+from src.adapter.type import RawSessionType
 from src.common.design.interface import Interface
 
 
-class AsyncSessionWrapperInterface[RawSessionType](Interface):
+class AsyncSessionWrapperInterface(
+    Generic[RawSessionType],
+    Interface,
+):
     @abstractmethod
     async def commit(
         self,
@@ -38,7 +42,10 @@ class AsyncSessionWrapperInterface[RawSessionType](Interface):
         raise NotImplementedError()
 
 
-class AsyncSessionManagerInterface[RawSessionType](Interface):
+class AsyncSessionManagerInterface(
+    Generic[RawSessionType],
+    Interface,
+):
     @asynccontextmanager
     @abstractmethod
     async def get_session(
