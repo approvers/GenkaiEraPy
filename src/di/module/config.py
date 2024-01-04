@@ -1,6 +1,6 @@
 from injector import Binder, InstanceProvider, Module
 
-from config import GenkaiEraConfig
+from config import GenkaiEraConfig, GenkaiEraTestConfig
 
 
 class GenkaiEraConfigModule(Module):
@@ -11,7 +11,7 @@ class GenkaiEraConfigModule(Module):
         if is_test == 1:
             self.__config = GenkaiEraTestConfig()  # type: ignore
         else:
-            self.__config = GenkaiEraConfig()  # type: ignore
+            self.__config = GenkaiEraConfig()
 
     def configure(self, binder: Binder) -> None:
         binder.bind(

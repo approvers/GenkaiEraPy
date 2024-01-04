@@ -1,6 +1,10 @@
 from injector import Binder, ClassProvider, Module
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.adapter.session import (
+    AsyncSessionWrapperInterface,
+    AsyncSessionManagerInterface,
+)
 from src.infrastructure.database.sqlalchemy.model.define import define_sa_models
 from src.infrastructure.database.sqlalchemy.session import (
     SAAsyncSessionManager,
