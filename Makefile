@@ -115,4 +115,4 @@ pytest_xml:
 pytest_ci:
 	$(MAKE) up
 	$(MAKE) online_migrate
-	docker compose run --rm app bash -c "python r./script/run_command.py pytest -v ./test/ --cov=./src/ --junitxml=pytest.xml --cov-report=term-missing:skip-covered | tee pytest-coverage.txt"
+	docker compose run --rm app bash -c "python ./script/run_command.py pytest -v ./test/ --cov=./src/ --junitxml=pytest.xml --cov-report=term-missing:skip-covered | tee pytest-coverage.txt"
