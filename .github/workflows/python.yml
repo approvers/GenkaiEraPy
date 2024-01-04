@@ -1,0 +1,80 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions: write-all
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+  IMAGE_CACHE_DIR: /tmp/cache/docker-image
+  IMAGE_CACHE_KEY: cache-image
+
+jobs:
+  flake8:
+    name: Run flake8
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run flake8
+        env:
+          GENKAIERA_IS_CI: "1"
+        run: |
+          make flake8
+
+  mypy:
+    name: Run mypy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run mypy
+        env:
+          GENKAIERA_IS_CI: "1"
+        run: |
+          make mypy
+
+  black:
+    name: Run black
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run black
+        env:
+          GENKAIERA_IS_CI: "1"
+        run: |
+          make black_check
+
+  pytest:
+    name: Run pytest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run pytest
+        env:
+          GENKAIERA_IS_CI: "1"
+        run: |
+          make pytest_ci
+
+      - name: Create Coverage Comment
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: pytest-coverage.txt
+          junitxml-path: ./pytest.xml
+  

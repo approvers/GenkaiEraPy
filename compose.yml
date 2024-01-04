@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
     tty: true
 
-  api:
+  app:
     build:
       context: .
       dockerfile: ./docker/python/Dockerfile
