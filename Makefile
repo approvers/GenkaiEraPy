@@ -41,6 +41,10 @@ build:
 up:
 	docker compose up -d --build
 
+.PHONY: init
+init:
+	$(MAKE) online_migrate
+
 .PHONY: down
 down:
 	docker compose down
@@ -60,6 +64,18 @@ logs:
 .PHONY: shell
 shell:
 	docker compose run --rm app bash
+
+.PHONY: online_migrate
+online_migrate:
+	docker compose run --rm app bash -c "python ./script/database.py --online"
+
+.PHONY: offline_migrate
+offline_migrate:
+	docker compose run --rm app bash -c "python ./script/database.py"
+
+.PHONY: make_migration
+make_migration:
+	docker compose run --rm app bash -c "python r./script/un_command.py alembic revision --autogenerate"
 
 .PHONY: flake8
 flake8:
@@ -87,13 +103,16 @@ isort_check:
 
 .PHONY: pytest_html
 pytest_html:
+	$(MAKE) online_migrate
 	docker compose run --rm app bash -c "python ./script/run_command.py pytest -v ./test/ --cov=./src/ --cov-report=html --html=report.html"
 
 .PHONY: pytest_xml
 pytest_xml:
+	$(MAKE) online_migrate
 	docker compose run --rm app bash -c "python ./script/run_command.py pytest -v ./test/ --cov=./src/ --cov-report=xml"
 
 .PHONY: pytest_ci
 pytest_ci:
 	$(MAKE) up
+	$(MAKE) online_migrate
 	docker compose run --rm app bash -c "python r./script/un_command.py pytest -v ./test/ --cov=./src/ --junitxml=pytest.xml --cov-report=term-missing:skip-covered | tee pytest-coverage.txt"
