@@ -9,11 +9,12 @@ readme = "README.md"
 [tool.poetry.dependencies]
 setuptools = "^69.0.3"
 python = "^3.12"
-python-dotenv = "^1.0.0"
+injector = "^0.21.0"
 pydantic = "^2.5.3"
 pydantic-settings = "^2.1.0"
 sqlalchemy = "^2.0.25"
 alembic = "^1.13.1"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.8.0"
