@@ -1,0 +1,51 @@
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    networks:
+      genkaiera_nw:
+    ports:
+      - "54320:5432"
+    environment:
+      - POSTGRES_USER=${GENKAIERA_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${GENKAIERA_POSTGRES_PASSWORD}
+    volumes:
+      - ./docker/postgres/initdb:/docker-entrypoint-initdb.d
+      - genkaiera_postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    tty: true
+
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+      target: development
+    networks:
+      genkaiera_nw:
+    volumes:
+      # Mount Volume to separate .venv from the host
+      - python_venv:/deploy/.venv
+      - ./:/deploy
+    working_dir: /deploy
+    command: >
+      bash -c "
+      while true; do sleep 10000; done
+      "
+    restart: unless-stopped
+    tty: true
+
+networks:
+  genkaiera_nw:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+
+volumes:
+  python_venv:
+    driver: local
+
+  genkaiera_postgres_data:
+    driver: local
