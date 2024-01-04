@@ -11,7 +11,7 @@ class GenkaiEraConfigModule(Module):
         if is_test == 1:
             self.__config = GenkaiEraTestConfig()  # type: ignore
         else:
-            self.__config = GenkaiEraConfig()
+            self.__config = GenkaiEraConfig()  # type: ignore
 
     def configure(self, binder: Binder) -> None:
         binder.bind(
