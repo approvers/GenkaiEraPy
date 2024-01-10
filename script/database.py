@@ -21,7 +21,7 @@ else:
     print("Offline mode. The `--online` flag is disabled.")
 
 
-USER = "genkaiera_api"
+USER = "genkaiera_app"
 DB = "genkaiera"
 PASSWORD = os.environ.get("GENKAIERA_POSTGRES_PASSWORD")
 HOST = os.environ.get("GENKAIERA_POSTGRES_HOST")
