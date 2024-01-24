@@ -3,9 +3,9 @@ from pydantic import BaseModel
 from src.common.library.pydantic.config import BaseConfig
 
 
-class Field(BaseModel):
+class ValueObject(BaseModel):
     model_config = BaseConfig
 
 
-class FrozenField(BaseModel):
+class FrozenValueObject(BaseModel):
     model_config = BaseConfig
