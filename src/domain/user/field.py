@@ -5,5 +5,5 @@ class UserID(ValueObject):
     value: str
 
 
-class UserGlobalNickname(ValueObject):
+class UserNickname(ValueObject):
     value: str
