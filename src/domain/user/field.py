@@ -7,7 +7,3 @@ class UserID(ValueObject):
 
 class UserGlobalNickname(ValueObject):
     value: str
-
-
-class UserNickname(ValueObject):
-    value: str
