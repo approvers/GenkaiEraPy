@@ -1,7 +1,7 @@
 from src.domain.base.entity import Entity
-from src.domain.user.field import UserID, UserNickname
+from src.domain.user.field import UserIdentifier, UserNickname
 
 
 class User(Entity):
-    id: UserID
+    identifier: UserIdentifier
     nickname: UserNickname
