@@ -1,10 +1,23 @@
 import datetime
+import uuid
 from typing import Self, Optional
 
 from pydantic import Field, field_validator
 
 from src.common.library.pydantic.validator.tzinfo import value_must_have_tzinfo
 from src.domain.base.value import ValueObject
+
+
+class UID(ValueObject):
+    value: uuid.UUID = Field(
+        description="Unique ID, must be unique and cannot be changed.",
+    )
+
+
+class NullableUID(ValueObject):
+    value: Optional[uuid.UUID] = Field(
+        description="Unique ID, must be unique and cannot be changed.",
+    )
 
 
 class CreatedAt(ValueObject):
