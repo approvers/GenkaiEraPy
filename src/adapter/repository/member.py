@@ -10,16 +10,25 @@ from src.domain.user.value import UserIdentifier
 
 class MemberRepository(Repository, Generic[RawSessionType]):
     @abstractmethod
-    async def create_or_update(
+    async def save(
         self,
         member: Member,
     ) -> Member:
         raise NotImplementedError()
 
     @abstractmethod
-    async def get_server_id_and_user_id(
+    async def get_latest_by_server_id_and_user_id(
         self,
         server_id: ServerIdentifier,
         user_id: UserIdentifier,
     ) -> Member:
-        pass
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def get_history_by_server_id_and_user_id(
+        self,
+        server_id: ServerIdentifier,
+        user_id: UserIdentifier,
+        limit: int,
+    ) -> list[Member]:
+        raise NotImplementedError()

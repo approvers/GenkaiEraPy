@@ -9,15 +9,23 @@ from src.domain.server.value import ServerIdentifier
 
 class ServerRepository(Repository, Generic[RawSessionType]):
     @abstractmethod
-    async def create_or_update(
+    async def save(
         self,
         server: Server,
     ) -> Server:
         raise NotImplementedError()
 
     @abstractmethod
-    async def get_by_id(
+    async def get_latest_by_id(
         self,
         server_id: ServerIdentifier,
     ) -> Server:
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def get_history_by_id(
+        self,
+        server_id: ServerIdentifier,
+        limit: int,
+    ) -> list[Server]:
         raise NotImplementedError()
