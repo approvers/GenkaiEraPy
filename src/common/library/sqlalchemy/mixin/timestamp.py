@@ -10,7 +10,7 @@ DEFAULT_UPDATED_AT_COLUMN_NAME: str = "updated_at"
 
 
 class CreatedAtMixin(object):
-    created_at: Mapped[datetime.datetime] = mapped_column(
+    record_created_at: Mapped[datetime.datetime] = mapped_column(
         name=DEFAULT_CREATED_AT_COLUMN_NAME,
         type_=DateTime(timezone=True),
         server_default=func.now(),
@@ -19,7 +19,7 @@ class CreatedAtMixin(object):
 
 
 class UpdatedAtMixin(object):
-    updated_at: Mapped[datetime.datetime] = mapped_column(
+    record_updated_at: Mapped[datetime.datetime] = mapped_column(
         name=DEFAULT_UPDATED_AT_COLUMN_NAME,
         type_=DateTime(timezone=True),
         onupdate=func.now(),
@@ -29,14 +29,14 @@ class UpdatedAtMixin(object):
 
 # We get an error when we do 'class TimestampMixin(CreatedAtMixin, UpdatedAtMixin)'
 class TimestampMixin(object):
-    created_at: Mapped[datetime.datetime] = mapped_column(
+    record_created_at: Mapped[datetime.datetime] = mapped_column(
         name=DEFAULT_CREATED_AT_COLUMN_NAME,
         type_=DateTime(timezone=True),
         server_default=func.now(),
         nullable=False,
     )
 
-    updated_at: Mapped[datetime.datetime] = mapped_column(
+    record_updated_at: Mapped[datetime.datetime] = mapped_column(
         name=DEFAULT_UPDATED_AT_COLUMN_NAME,
         type_=DateTime(timezone=True),
         onupdate=func.now(),
