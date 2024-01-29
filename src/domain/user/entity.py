@@ -4,10 +4,12 @@ from src.domain.user.value import (
     UserNickname,
     UserRecordCreatedAt,
     UserRecordUpdatedAt,
+    UserRecordUID,
 )
 
 
 class User(Entity):
+    record_uid: UserRecordUID
     created_at: UserRecordCreatedAt
     updated_at: UserRecordUpdatedAt
 
