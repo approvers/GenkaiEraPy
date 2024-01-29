@@ -13,11 +13,23 @@ class UID(ValueObject):
         description="Unique ID, must be unique and cannot be changed.",
     )
 
+    @staticmethod
+    def generate() -> "UID":
+        generated: UID = UID(value=uuid.uuid4())
+
+        return generated
+
 
 class NullableUID(ValueObject):
     value: Optional[uuid.UUID] = Field(
         description="Unique ID, must be unique and cannot be changed.",
     )
+
+    @staticmethod
+    def generate() -> "NullableUID":
+        generated: NullableUID = NullableUID(value=uuid.uuid4())
+
+        return generated
 
 
 class CreatedAt(ValueObject):
