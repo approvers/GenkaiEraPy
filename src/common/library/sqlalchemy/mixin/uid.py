@@ -14,4 +14,6 @@ class UIDMixin(object):
         primary_key=True,
         default=uuid.uuid4,
         nullable=False,
+        unique=True,
+        index=True,
     )
