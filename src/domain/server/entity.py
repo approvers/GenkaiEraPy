@@ -1,11 +1,18 @@
 from src.domain.base.entity import Entity
-from src.domain.common.value import NullableCreatedAt, NullableUpdatedAt
-from src.domain.server.value import ServerIdentifier, ServerName
+from src.domain.server.value import (
+    ServerIdentifier,
+    ServerName,
+    ServerRecordCreatedAt,
+    ServerRecordUpdatedAt,
+    ServerRecordUID,
+)
 
 
 class Server(Entity):
-    created_at: NullableCreatedAt
-    updated_at: NullableUpdatedAt
+    record_uid: ServerRecordUID
+    record_created_at: ServerRecordCreatedAt
+    record_updated_at: ServerRecordUpdatedAt
 
     identifier: ServerIdentifier
+
     name: ServerName

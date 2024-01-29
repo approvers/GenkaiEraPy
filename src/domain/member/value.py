@@ -1,6 +1,19 @@
 from pydantic import Field
 
 from src.domain.base.value import ValueObject
+from src.domain.common.value import RecordCreatedAt, RecordUID
+
+
+class MemberRecordUID(RecordUID):
+    pass
+
+
+class MemberRecordCreatedAt(RecordCreatedAt):
+    pass
+
+
+class MemberRecordUpdatedAt(RecordCreatedAt):
+    pass
 
 
 class MemberLocalNickname(ValueObject):

@@ -1,6 +1,19 @@
 from pydantic import Field
 
 from src.domain.base.value import ValueObject
+from src.domain.common.value import RecordUID, RecordCreatedAt, RecordUpdatedAt
+
+
+class ServerRecordUID(RecordUID):
+    pass
+
+
+class ServerRecordCreatedAt(RecordCreatedAt):
+    pass
+
+
+class ServerRecordUpdatedAt(RecordUpdatedAt):
+    pass
 
 
 class ServerIdentifier(ValueObject):

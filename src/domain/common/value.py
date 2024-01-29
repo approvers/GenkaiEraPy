@@ -1,6 +1,6 @@
 import datetime
 import uuid
-from typing import Self, Optional
+from typing import Self, Optional, Type
 
 from pydantic import Field, field_validator
 
@@ -8,31 +8,27 @@ from src.common.library.pydantic.validator.tzinfo import value_must_have_tzinfo
 from src.domain.base.value import ValueObject
 
 
-class UID(ValueObject):
+class RecordUID(ValueObject):
     value: uuid.UUID = Field(
         description="Unique ID, must be unique and cannot be changed.",
     )
 
-    @staticmethod
-    def generate() -> "UID":
-        generated: UID = UID(value=uuid.uuid4())
-
-        return generated
+    @classmethod
+    def generate(cls: Type[Self]) -> Self:
+        return RecordUID(value=uuid.uuid4())
 
 
-class NullableUID(ValueObject):
+class NullableRecordUID(ValueObject):
     value: Optional[uuid.UUID] = Field(
         description="Unique ID, must be unique and cannot be changed.",
     )
 
-    @staticmethod
-    def generate() -> "NullableUID":
-        generated: NullableUID = NullableUID(value=uuid.uuid4())
-
-        return generated
+    @classmethod
+    def generate(cls: Type[Self]) -> Self:
+        return NullableRecordUID(value=uuid.uuid4())
 
 
-class CreatedAt(ValueObject):
+class RecordCreatedAt(ValueObject):
     value: datetime.datetime = Field(
         description="Datetime, must have dt.tzinfo.",
     )
@@ -49,7 +45,7 @@ class CreatedAt(ValueObject):
         return v
 
 
-class UpdatedAt(ValueObject):
+class RecordUpdatedAt(ValueObject):
     value: datetime.datetime = Field(
         description="Datetime, must have dt.tzinfo.",
     )
@@ -66,7 +62,7 @@ class UpdatedAt(ValueObject):
         return v
 
 
-class NullableCreatedAt(ValueObject):
+class NullableRecordCreatedAt(ValueObject):
     value: Optional[datetime.datetime] = Field(
         description="Datetime, must have dt.tzinfo.",
     )
@@ -86,7 +82,7 @@ class NullableCreatedAt(ValueObject):
         return v
 
 
-class NullableUpdatedAt(ValueObject):
+class NullableRecordUpdatedAt(ValueObject):
     value: Optional[datetime.datetime] = Field(
         description="Datetime, must have dt.tzinfo.",
     )
