@@ -1,6 +1,6 @@
 from src.domain.base.entity import Entity
 from src.domain.common.value import NullableCreatedAt, NullableUpdatedAt
-from src.domain.user.field import UserIdentifier, UserNickname
+from src.domain.user.value import UserIdentifier, UserNickname
 
 
 class User(Entity):

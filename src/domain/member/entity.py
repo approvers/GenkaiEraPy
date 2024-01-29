@@ -2,7 +2,7 @@ from src.domain.base.entity import Entity
 from src.domain.common.value import NullableCreatedAt
 from src.domain.member.value import MemberLocalNickname
 from src.domain.server.value import ServerIdentifier
-from src.domain.user.field import UserIdentifier
+from src.domain.user.value import UserIdentifier
 
 
 class Member(Entity):
