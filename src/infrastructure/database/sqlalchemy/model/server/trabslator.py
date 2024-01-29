@@ -12,7 +12,7 @@ from src.infrastructure.database.sqlalchemy.model.server.model import SAServer
 class SAServerTranslator:
     @staticmethod
     def to_entity(
-        sa_record: SAServer,
+            sa_record: SAServer,
     ) -> Server:
         entity: Server = Server(
             record_uid=ServerRecordUID(value=sa_record.record_uid),
@@ -26,7 +26,7 @@ class SAServerTranslator:
 
     @staticmethod
     def to_sa(
-        entity: Server,
+            entity: Server,
     ) -> SAServer:
         sa_record: SAServer = SAServer()
 
