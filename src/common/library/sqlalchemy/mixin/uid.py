@@ -8,10 +8,12 @@ DEFAULT_UID_COLUMN_NAME: str = "uid"
 
 
 class UIDMixin(object):
-    uid: Mapped[uuid.UUID] = mapped_column(
+    record_uid: Mapped[uuid.UUID] = mapped_column(
         name=DEFAULT_UID_COLUMN_NAME,
         type_=SAUUID,
         primary_key=True,
         default=uuid.uuid4,
         nullable=False,
+        unique=True,
+        index=True,
     )

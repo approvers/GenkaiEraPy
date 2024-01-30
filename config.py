@@ -7,6 +7,8 @@ class GenkaiEraConfig(BaseSettings):
     IS_CI: int = 0
     IS_TEST: int = 0
 
+    DISCORD_TOKEN: str
+
     POSTGRES_HOST: str
     POSTGRES_PORT: str
     POSTGRES_DB_NAME: str = "genkaiera"

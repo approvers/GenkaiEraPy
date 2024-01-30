@@ -19,7 +19,7 @@ def parse_0_or_1_envvar(name: str) -> bool:
 
         except (ValueError, TypeError):
             raise RuntimeError(
-                "RuntimeError: the value of the CI environment variable must be an integer with value 0 or 1."
+                "the value of the CI environment variable must be an integer with value 0 or 1."
             )
 
         else:
@@ -35,8 +35,8 @@ def load_dotenv() -> None:
 
     except ImportError:
         raise RuntimeError(
-            "RuntimeError: failed to import 'dotenv'.\n"
-            "Please install python-dotenv to use this command."
+            "failed to import 'dotenv'.\n"
+            "please install python-dotenv to use this command."
         )
 
     envfiles_to_load: list[str]

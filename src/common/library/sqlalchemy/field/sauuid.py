@@ -25,9 +25,7 @@ class SAUUID(types.TypeDecorator[uuid.UUID]):
         if isinstance(value, UUID):
             return str(value)
 
-        raise ValueError(
-            f"ValueError: value '{value}' is not a valid instance of 'uuid.UUID'."
-        )
+        raise ValueError(f"value '{value}' is not a valid instance of 'uuid.UUID'.")
 
     def process_result_value(
         self, value: Optional[str], dialect: Optional[Dialect] = None
@@ -39,7 +37,7 @@ class SAUUID(types.TypeDecorator[uuid.UUID]):
             return UUID(value)
 
         raise ValueError(
-            f"ValueError: value '{value}' is not 'None' or a valid instance of 'uuid.UUID'."
+            f"value '{value}' is not 'None' or a valid instance of 'uuid.UUID'."
         )
 
     # noinspection PyMethodMayBeStatic

@@ -44,7 +44,7 @@ def execute_command(command_list: list[str]) -> None:
 
     if (proc.returncode is None) or (proc.returncode != 0):
         raise CommandError(
-            f"Error in command execution with return code: {proc.returncode}"
+            f"error in command execution with return code: {proc.returncode}"
         )
 
 

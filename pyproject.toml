@@ -16,6 +16,7 @@ sqlalchemy = "^2.0.25"
 asyncpg = "^0.29.0"
 alembic = "^1.13.1"
 python-dotenv = "^1.0.0"
+discord = "^2.3.2"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.8.0"
