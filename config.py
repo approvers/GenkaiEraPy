@@ -8,7 +8,6 @@ class GenkaiEraConfig(BaseSettings):
     IS_TEST: int = 0
 
     DISCORD_TOKEN: str
-    DISCORD_TARGET_GUILD_ID: str = "683939861539192860"
 
     POSTGRES_HOST: str
     POSTGRES_PORT: str
